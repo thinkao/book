@@ -1,5 +1,5 @@
 <template>
-  <span>1234567</span>
+  <span>wo zui shuai</span>
 </template>
 <script>
 </script>
