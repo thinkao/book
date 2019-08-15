@@ -93,7 +93,7 @@ export default {
             this.$message({message: '用户名或者密码错误', type: 'error'})
           } else {
             this.$message({message: '登陆成功', type: 'success'})
-            this.$router.push('page/MainPage')
+            this.$router.push('page/HomePage')
           }
           console.log('success!!!')
         }).catch(e => {
