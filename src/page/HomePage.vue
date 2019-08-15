@@ -1,5 +1,5 @@
 <template>
-  <span>wo zui shuai</span>
+  <span>wo shi zui shuai de</span>
 </template>
 <script>
 </script>
