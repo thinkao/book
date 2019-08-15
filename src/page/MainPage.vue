@@ -110,7 +110,12 @@
         <el-menu-item index="8-3">艺术类</el-menu-item>
         <el-menu-item index="8-4">经济类</el-menu-item>
       </el-submenu>
-      <el-menu-item index="9"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+      <el-submenu index="9" style="float: right">
+        <template slot="title">此处显示昵称</template>
+        <el-menu-item index="9-1" style="text-align: center">修改密码</el-menu-item>
+        <el-menu-item index="9-2" style="text-align: center" @click="loginTo">退出登录</el-menu-item>
+      </el-submenu>
+      <img src="../../static/img/auto.jpg" style="width: 60px;height: 60px;float: right;">
     </el-menu>
     <el-drawer
       title="我的日历"
@@ -134,9 +139,15 @@ export default {
     }
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+    handleSelect (key, keyPath) {
+      console.log(key, keyPath)
     },
+    loginTo () {
+      this.$router.push('../Login')
+    }
   }
 }
 </script>
+<style>
+
+</style>
