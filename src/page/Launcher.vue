@@ -31,9 +31,9 @@
       </el-menu>
     </div>
     <div class="picture">
-      <el-carousel  style="position: relative" height="500px">
+      <el-carousel  style="position: relative" height="800px">
         <el-carousel-item v-for="item in picture" :key="item">
-          <img :src="item.img" style="height: 500px;width: 100%">
+          <img :src="item.img" style="height: 800px;width: 100%">
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -75,7 +75,7 @@
         <p style="font-size: 20px;color: #363636">本公司与部分城市的各大高校合作，在高校以及各个城市设有站点，配送快则五分钟，慢则一天</p>
       </div>
       <div class="speed">
-        <img src="../../static/img/speed.jpg" style="position:relative;height: 600px;width: 100%">
+        <img src="../../static/img/speed.jpg" style="position:relative;height: 900px;width: 100%">
       </div>
       <div class="title1">
         <el-divider></el-divider>
@@ -88,11 +88,11 @@
         </div>
       </div>
       <div class="launcher_money1">
-        <p style="position: relative;font-size: 20px">在这里</p>
-        <p style="position: relative;font-size: 20px">1元 = 10元</p>
-        <p style="position: relative;font-size: 20px">10本书 = 1本书</p>
-        <p style="position: relative;font-size: 20px">1分承諾 = 1份安心</p>
-        <p style="position: relative;font-size: 30px"> Are You OK ?</p>
+        <p style="position: relative;font-size: 20px ;line-height: 35px">在这里</p>
+        <p style="position: relative;font-size: 20px ;line-height: 35px">1元 = 10元</p>
+        <p style="position: relative;font-size: 20px ;line-height: 35px">10本书 = 1本书</p>
+        <p style="position: relative;font-size: 20px ;line-height: 35px">1分承諾 = 1份安心</p>
+        <p style="position: relative;font-size: 30px ;line-height: 35px"> Are You OK ?</p>
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@ export default {
     return {
       fits1: ['公众基础书类', '考研书材料类', 'CET雅思托福类', '专业书籍类'],
       fits2: ['言情剧小说类', '情感剧漫画类', '社会人文科学类', '其他书籍类'],
-      url: ['https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg', 'http://img2.3lian.com/2014/f4/191/d/22.jpg', 'http://img2.3lian.com/2014/f4/191/d/22.jpg', 'http://img2.3lian.com/2014/f4/191/d/22.jpg'],
+      url: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565975771268&di=25e67b4b0c3db2b6cd519d4248d7e69d&imgtype=0&src=http%3A%2F%2Fuploads.5068.com%2Fallimg%2F1801%2F162-1P116162621-52.png', 'http://img2.3lian.com/2014/f4/191/d/22.jpg', 'http://img2.3lian.com/2014/f4/191/d/22.jpg', 'http://img2.3lian.com/2014/f4/191/d/22.jpg'],
       picture: [
         {
           img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555932101740&di=9ee42bcea75b9a6b91f15b6da964ac37&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F5879c03369db1.jpg'
@@ -134,6 +134,10 @@ export default {
 
 </script>
 <style>
+  *{
+    margin: 0;
+    padding:0;
+  }
   .main{
     position: relative;
   }
