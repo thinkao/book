@@ -3,7 +3,7 @@
     <div class="login-main">
       <img src="https://images2.alphacoders.com/545/54542.jpg" width="100%" height="100%" style="position: fixed;top:0;left: 0" >
       <div style="width: 100%;position: absolute;text-align: right;">
-        <p @click="open" style="color: white;font-family:  微软雅黑;">立即注册?&nbsp&nbsp&nbsp&nbsp</p>
+        <el-button type="text" @click="open" style="color: white;font-family:  微软雅黑;">立即注册?&nbsp&nbsp&nbsp&nbsp</el-button>
       </div>
       <div style="width: 100%;position: absolute;text-align: center;top: 50px;">
         <p><span style="margin-left: 10px;font-size: 35px;font-family: 微软雅黑;color: #fff">书到用时方恨少,事非经过不知难</span></p>

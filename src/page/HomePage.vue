@@ -1,5 +1,9 @@
 <template>
-  <span>wo试试  啊啊 我哦哦哦</span>
+    <div>
+      <span>456</span>
+      <router-view></router-view>
+    </div>
 </template>
+
 <script>
 </script>

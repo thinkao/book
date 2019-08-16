@@ -1,0 +1,11 @@
+{
+  "mks": [
+    {
+      "id": "00",
+      "name": "首页",
+      "url": "/page/HomePage",
+      "menu": true,
+      "file": "/HomePage"
+    }
+  ]
+}

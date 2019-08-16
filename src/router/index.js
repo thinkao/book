@@ -7,27 +7,26 @@ import HomePage from '../page/HomePage.vue'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'launcher',
-      component: Launcher
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-    {
-      path: '/page/MainPage',
-      name: '主页',
-      component: MainPage
-    },
-    {
-      path: '/page/HomePage',
-      name: '首页',
-      component: HomePage
-    }
-  ]
-})
+let routes = [
+  {
+    path: '/',
+    name: 'launcher',
+    component: Launcher
+  },
+  {
+    path: '/login',
+    name: '登录',
+    component: Login
+  },
+  {
+    path: '/page/MainPage',
+    name: '导航',
+    component: MainPage
+  },
+  {
+    path: '/page/HomePage',
+    name: '首页',
+    component: HomePage
+  }
+]
+export default routes
