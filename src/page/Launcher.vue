@@ -40,8 +40,8 @@
     <div class="content">
       <div class="title1">
         <span>服务好</span>
-        <p style="font-size: 20px;color: #363636">本网站服务对象广泛，包括在学校中小学生、大学生以及社会群体，涉及到的资料有公众基础课书籍、专业课书籍、</p>
-        <p style="font-size: 20px;color: #363636">考研资料、CET、雅思托福、课外书（小说、漫画等）等应有尽有</p>
+        <p style="font-size: 20px;color: #363636;margin-top: 30px">本网站服务对象广泛，包括在学校中小学生、大学生以及社会群体，涉及到的资料有公众基础课书籍、专业课书籍、</p>
+        <p style="font-size: 20px;color: #363636;margin-top: 30px">考研资料、CET、雅思托福、课外书（小说、漫画等）等应有尽有</p>
       </div>
       <br/><br/>
       <div class="demo-image" style="position: relative;margin-left: 300px">
@@ -72,7 +72,7 @@
       <div class="title1">
         <el-divider></el-divider>
         <span>速度快</span>
-        <p style="font-size: 20px;color: #363636">本公司与部分城市的各大高校合作，在高校以及各个城市设有站点，配送快则五分钟，慢则一天</p>
+        <p style="font-size: 20px;color: #363636;margin-top: 30px">本公司与部分城市的各大高校合作，在高校以及各个城市设有站点，配送快则五分钟，慢则一天</p>
       </div>
       <div class="speed">
         <img src="../../static/img/speed.jpg" style="position:relative;height: 900px;width: 100%">
@@ -80,7 +80,7 @@
       <div class="title1">
         <el-divider></el-divider>
         <span>能省钱</span>
-        <p style="font-size: 20px;color: #363636">不需要再为昂贵的书费材料费而苦苦烦恼，也不需要网购配送费而推推嚷嚷，在这里，一折购</p>
+        <p style="font-size: 20px;color: #363636;margin-top: 30px">不需要再为昂贵的书费材料费而苦苦烦恼，也不需要网购配送费而推推嚷嚷，在这里，一折购</p>
       </div>
       <div class="launcher_money">
         <div class="book">
@@ -88,11 +88,11 @@
         </div>
       </div>
       <div class="launcher_money1">
-        <p style="position: relative;font-size: 20px ;line-height: 35px">在这里</p>
-        <p style="position: relative;font-size: 20px ;line-height: 35px">1元 = 10元</p>
-        <p style="position: relative;font-size: 20px ;line-height: 35px">10本书 = 1本书</p>
-        <p style="position: relative;font-size: 20px ;line-height: 35px">1分承諾 = 1份安心</p>
-        <p style="position: relative;font-size: 30px ;line-height: 35px"> Are You OK ?</p>
+        <p style="position: relative;font-size: 20px ;line-height: 60px">在这里</p>
+        <p style="position: relative;font-size: 20px ;line-height: 60px">1元 = 10元</p>
+        <p style="position: relative;font-size: 20px ;line-height: 60px">10本书 = 1本书</p>
+        <p style="position: relative;font-size: 20px ;line-height: 60px">1分承諾 = 1份安心</p>
+        <p style="position: relative;font-size: 30px ;line-height: 60px"> Are You OK ?</p>
       </div>
     </div>
   </div>
@@ -187,7 +187,7 @@ export default {
     position: relative;
    }
   .launcher_money1{
-    margin-top: 200px;
+    margin-top: 160px;
     margin-left: 800px;
     position: relative;
   }

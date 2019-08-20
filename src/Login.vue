@@ -70,11 +70,20 @@ export default {
   methods: {
     onRegister () {
       if (this.addForm.user_account.trim() === '') {
-        this.$message({message: '请输入账号', type: 'error', customClass: 'zZindex'})
+        this.$message({message: '请输入您的手机号', type: 'error', customClass: 'zZindex'})
       } else if (this.addForm.user_pass.trim() === '') {
-        this.$message({message: '请输入密码', type: 'error', customClass: 'zZindex'})
+        this.$message({message: '请设置新的密码', type: 'error', customClass: 'zZindex'})
       } else {
-
+        var registerParams = {user_account: this.addForm.user_account, user_pass: this.addForm.user_pass}
+        this.$httpSystem.register(registerParams).then(resp => {
+          this.loginLoading = false
+          if (resp.data.code === 302) {
+            this.$message({message: '该用户已存在!!!', type: 'error'})
+          } else {
+            this.$message({message: '注册成功', type: 'success'})
+            this.dialogVisible = false
+          }
+        })
       }
     },
     onLogin () {
