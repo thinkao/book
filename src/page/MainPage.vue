@@ -98,10 +98,15 @@
       </el-submenu>
       <el-submenu index="7">
         <template slot="title">漫画类</template>
-        <el-menu-item index="7-1">计算机类</el-menu-item>
-        <el-menu-item index="7-2">机械类</el-menu-item>
-        <el-menu-item index="7-3">艺术类</el-menu-item>
-        <el-menu-item index="7-4">经济类</el-menu-item>
+        <el-menu-item index="7-1">冒险</el-menu-item>
+        <el-menu-item index="7-2">科幻</el-menu-item>
+        <el-menu-item index="7-3">搞笑</el-menu-item>
+        <el-menu-item index="7-4">剧情</el-menu-item>
+        <el-menu-item index="7-5">奇幻</el-menu-item>
+        <el-menu-item index="7-6">动作</el-menu-item>
+        <el-menu-item index="7-7">儿童</el-menu-item>
+        <el-menu-item index="7-8">情感</el-menu-item>
+        <el-menu-item index="7-9">其他</el-menu-item>
       </el-submenu>
       <el-submenu index="8">
         <template slot="title">其他</template>
