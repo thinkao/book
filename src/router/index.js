@@ -4,6 +4,7 @@ import Login from '../Login'
 import MainPage from '../page/MainPage.vue'
 import Launcher from '../page/Launcher.vue'
 import HomePage from '../page/HomePage.vue'
+import Qinggan from '../page/comedy/Qinggan.vue'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ let routes = [
     path: '/page/HomePage',
     name: '首页',
     component: HomePage
+  },
+  {
+    path: '/page/comedy/Qinggan',
+    name: '首页',
+    component: Qinggan
   }
 ]
 export default routes

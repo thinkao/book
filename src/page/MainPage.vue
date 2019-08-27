@@ -105,7 +105,7 @@
         <el-menu-item index="7-5">奇幻</el-menu-item>
         <el-menu-item index="7-6">动作</el-menu-item>
         <el-menu-item index="7-7">儿童</el-menu-item>
-        <el-menu-item index="7-8">情感</el-menu-item>
+        <el-menu-item index="7-8" @click="Qinggan">情感</el-menu-item>
         <el-menu-item index="7-9">其他</el-menu-item>
       </el-submenu>
       <el-submenu index="8">
@@ -149,6 +149,9 @@ export default {
     },
     loginTo () {
       this.$router.push('../Login')
+    },
+    Qinggan () {
+      this.$router.push('comedy/Qinggan')
     }
   }
 }

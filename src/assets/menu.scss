@@ -1,0 +1,200 @@
+.nav-main-wrap{
+  width: 60px;
+  height: 100%;
+  position: relative;
+  z-index:999;
+  .nav-main-wrap-span{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    z-index:999;
+  }
+  .nav-main-wrap-name{
+    display: inline-block;
+    width: auto;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    z-index:999;
+    color: #fff;
+    font-size: 14px;
+  }
+  .nav-main-wrap-wrapper{
+    overflow: hidden;
+    position: absolute;
+    z-index:999;
+    width: 60px;
+    height: 100%;
+    -webkit-transition: all .3s cubic-bezier(0,0,.2,1);
+    transition: all .3s cubic-bezier(0,0,.2,1);
+    &:hover {
+      cursor: pointer;
+      width: 200px;
+      -webkit-transition-delay: .3s;
+      transition-delay: .3s;
+    }
+  }
+  ul {
+    height: 100%;
+    width: calc(100% + 20px);
+    overflow-y: auto;
+    position: relative;
+    z-index: 2;
+    top: 0;
+    background-color: #252a2f;
+    > li.select-menu-li{
+      -webkit-transition: all .2s ease-out 0s;
+      transition: all .2s ease-out 0s;
+      width: 100%;
+      height: 60px;
+      line-height: 60px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      background-color: #1d94e8;
+      .nav-main-wrap-span{
+        color: #fff;
+      }
+      .nav-main-wrap-name{
+        color: #fff;
+      }
+      &:hover{
+        background: #1d94e8;
+        .nav-main-wrap-span{
+          color: #fff;
+        }
+        .nav-main-wrap-name{
+          color: #fff;
+        }
+      }
+    }
+    > li {
+      -webkit-transition: all .2s ease-out 0s;
+      transition: all .2s ease-out 0s;
+      width: 100%;
+      height: 60px;
+      line-height: 60px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      .nav-main-wrap-span{
+        color: #fff;
+      }
+      &:hover{
+        background: #192129;
+        .nav-main-wrap-span{
+          color: #fff;
+        }
+        .nav-main-wrap-name{
+          color: #00c1de;
+        }
+      }
+      span{
+        display: inline-block;
+        width: auto;
+        &:nth-of-type(2){
+          position: absolute;
+        }
+      }
+    }
+  }
+}
+.menu-div{
+  background-color: #f2f2f4;
+  z-index: 999;
+  box-shadow: 0px 10px 12px rgba(23, 0, 31, 0.5);
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .el-scrollbar .el-scrollbar__wrap{
+      width:calc(100% + 17px)!important;
+    }
+  }
+  _:-ms-lang(x), _::-webkit-meter-bar, .el-scrollbar .el-scrollbar__wrap{
+    width:calc(100% + 17px)!important;
+  }
+  .menu-collapse-button{
+    height: 60px;display: block;position: relative;
+    border-bottom: 1px solid #dadada;
+    line-height: 60px;
+    padding: 0 28px;
+    border-bottom: 1px solid #dadada;
+    font-weight: 700;
+    font-size: 14px;
+    color: #373d41;
+  }
+  .menu .menu-li{
+    list-style: none;
+    line-height: 40px;
+    cursor: pointer;
+    color: #373d41;
+  }
+  .menu{
+    background-color: #f2f2f4;
+    .menu-li-lable{
+      padding: 0 15px 0 15px;
+      color: #373d41;
+      font-size: 12px;
+      span{
+        display: inline-block;
+        padding-left: 6px;
+        width: 150px;
+      }
+      &:hover{
+        background-color: #fafbfc;
+      }
+    }
+    .menu-li-cul li{
+      span{
+        display: inline-block;
+        padding-left: 6px;
+      }
+      padding: 0 28px 0 28px;
+      &:hover{
+        background-color: #fafbfc;
+      }
+    }
+    .menu-li-cul li.select-menu-li-cli{
+      background-color: #fafbfc;
+      color: #1d94e8;
+    }
+  }
+}
+.menu-div{
+
+}
+.mk-page-header{
+  height: 60px;display: block;position: relative;
+  border-bottom: 1px solid #dadada;
+  .mk-page-header-title{
+    position: absolute;
+    left: 20px;
+    top: 19px;
+    font-size: 14px;
+    color: #393b43;
+    font-family: MicrosoftYaHei-Bold;
+    border-left: 3px solid #1d94e8;
+    padding-left: 8px;
+    span {
+      &:nth-child(1) {
+        cursor: pointer;
+      }
+    }
+  }
+  .mk-page-header-button-div{
+    display: inline-block;
+    line-height: 58px;
+    margin-right: 20px;
+    float: right;
+  }
+}
+
+.el-menu.el-menu--horizontal>.el-menu-item, .el-menu.el-menu--horizontal>.el-submenu .el-submenu__title{
+  height: 48px!important;
+  line-height: 48px!important;
+}
+.themeA{
+
+}
