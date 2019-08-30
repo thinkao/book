@@ -5,8 +5,12 @@
 </template>
 
 <script>
+import MainPage from '@/page/MainPage'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    'MainPage': MainPage
+  },
 }
 </script>
 

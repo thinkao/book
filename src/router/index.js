@@ -5,6 +5,7 @@ import MainPage from '../page/MainPage.vue'
 import Launcher from '../page/Launcher.vue'
 import HomePage from '../page/HomePage.vue'
 import Qinggan from '../page/comedy/Qinggan.vue'
+import Children from '../page/comedy/Children.vue'
 
 Vue.use(Router)
 
@@ -31,8 +32,15 @@ let routes = [
   },
   {
     path: '/page/comedy/Qinggan',
-    name: '首页',
+    //redirect: '/page/comedy/Qinggan',
+    name: '情感',
     component: Qinggan
+  },
+  {
+    path: '/page/comedy/Children',
+    //redirect: '/page/comedy/Children',
+    name: '儿童',
+    component: Children
   }
 ]
 export default routes

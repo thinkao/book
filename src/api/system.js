@@ -12,3 +12,4 @@ export const login = (params) => {
 export const register = (params) => {
   return axios.post(`http://127.0.0.1:8080/user/addUser`, params).then(res => res)
 }
+

@@ -3,7 +3,7 @@
     <div class="login-main">
       <img src="https://images2.alphacoders.com/545/54542.jpg" width="100%" height="100%" style="position: fixed;top:0;left: 0" >
       <div style="width: 100%;position: absolute;text-align: right;">
-        <el-button type="text" @click="open" style="color: white;font-family:  微软雅黑;">立即注册?&nbsp&nbsp&nbsp&nbsp</el-button>
+        <el-button type="text" @click="open" style="color: white;font-family:  微软雅黑;">立即注册?</el-button>
       </div>
       <div style="width: 100%;position: absolute;text-align: center;top: 50px;">
         <p><span style="margin-left: 10px;font-size: 35px;font-family: 微软雅黑;color: #fff">书到用时方恨少,事非经过不知难</span></p>
@@ -116,18 +116,6 @@ export default {
     }
   },
   mounted () {
-    /*let loginuser = localStorage.getItem('users')
-    loginuser = JSON.parse(loginuser)
-    if (loginuser !== null) {
-      this.checked = true
-      this.addForm.user_account = loginuser.user_account
-      this.addForm.user_pass = loginuser.user_pass
-    }
-    document.onkeydown = (e) => {
-      if (e.keyCode === 13) {
-        this.onLogin()
-      }
-    }*/
   }
 }
 </script>

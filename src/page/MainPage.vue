@@ -103,10 +103,10 @@
         <el-menu-item index="7-3">搞笑</el-menu-item>
         <el-menu-item index="7-4">剧情</el-menu-item>
         <el-menu-item index="7-5">奇幻</el-menu-item>
-        <el-menu-item index="7-6">动作</el-menu-item>
-        <el-menu-item index="7-7">儿童</el-menu-item>
-        <el-menu-item index="7-8" @click="Qinggan">情感</el-menu-item>
-        <el-menu-item index="7-9">其他</el-menu-item>
+        <el-menu-item index="76">动作</el-menu-item>
+        <router-link to="/page/comedy/Children"><el-menu-item index="77">儿童</el-menu-item></router-link>
+        <router-link to="/page/comedy/Qinggan"> <el-menu-item index="78">情感</el-menu-item></router-link>
+        <el-menu-item index="79">其他</el-menu-item>
       </el-submenu>
       <el-submenu index="8">
         <template slot="title">其他</template>
@@ -131,6 +131,7 @@
       </el-calendar>
     </el-drawer>
   </VerticalLayout>
+
 </template>
 <script>
 export default {
@@ -150,8 +151,11 @@ export default {
     loginTo () {
       this.$router.push('../Login')
     },
-    Qinggan () {
+    Qinggan:function() {
       this.$router.push('comedy/Qinggan')
+    },
+    Children:function () {
+      this.$router.push('comedy/Children')
     }
   }
 }

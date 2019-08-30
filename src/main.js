@@ -9,6 +9,7 @@ import routes from './router/index'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.prototype.$httpSystem = api.httpSystem
+Vue.prototype.$api = api.api
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

@@ -60,8 +60,8 @@ const treeToPath = (tree, paths, currentPaths) => {
       currentPath.push(obj)
       obj = {}
     }
-    if (tree[i].children.length) {
-      treeToPath(tree[i].children, path, currentPath)
+    if (tree[i].Children.length) {
+      treeToPath(tree[i].Children, path, currentPath)
     } else {
       // path.push(currentPath.slice(0))
     }
@@ -90,8 +90,8 @@ const getMaxFloor = function (treeData) {
       if (floor > max) {
         max = floor
       }
-      if (e.children && e.children.length > 0) {
-        each(e.children, floor + 1)
+      if (e.Children && e.Children.length > 0) {
+        each(e.Children, floor + 1)
       }
     })
   }
