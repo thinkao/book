@@ -1,17 +1,16 @@
 <template>
   <div class="layout-div">
     <Demo></Demo>
-    <div class="layout-div" slot="header" style="padding: 0 10px;" v-if="showList===1">
-      <el-form class="query-from"  v-model="ruleForm"  :inline="true">
+    <div class="layout-div" slot="header" v-if="showList===1" style="margin-top: 50px">
+      <el-form class="query-from"  v-model="queryForm"  :inline="true" style="display: inline">
         <el-form-item>
-          <el-input  placeholder="输入条件"></el-input>
-          <!--v-model="updateForm.parameter.name"-->
+          <el-input v-model="queryForm.parameter.name" placeholder="输入条件"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button class="zdy-button" icon="el-icon-search" :plain="true" @click="search"></el-button>
         </el-form-item>
       </el-form>
-      <el-button class="zdy-button bao_cun" style="float: right;margin: 10px 15px 0 0;" @click="changeMap(2)">新增</el-button>
+      <el-button class="zdy-button bao_cun" style="margin: 0px 30px 0 0;display: inline;float: right;" @click="changeMap(2)">新增</el-button>
       <div class="layout-div" style="padding: 0 10px 0;">
         <el-table
           :data="tableData"
@@ -49,22 +48,25 @@
           </el-table-column>
           <el-table-column  label="操作">
             <template slot-scope="scope">
-              <el-button @click="deleteRow(scope.row)" type="text" size="small"><i class="iconfont icon-shanchu" title="删除"></i></el-button>
+              <el-button @click="deleteRow(scope.row)" type="text" size="small"><i class="el-icon-delete" title="删除"></i></el-button>
+              <el-button @click="updateRow(scope.row)" type="text" size="small"><i class="el-icon-edit" title="编辑"></i></el-button>
+              <el-button @click="shopRow(scope.row)" type="text" size="small"><i class=" el-icon-shopping-cart-2" title="加入购物车"></i></el-button>
+              <el-button @click="buyRow(scope.row)" type="text" size="small"><i class=" el-icon-shopping-bag-1" title="点击购买"></i></el-button>
             </template>
           </el-table-column>
         </el-table>
       </div>
     </div>
 
-    <div class="layout-div" v-if="showList===2">
+    <div class="layout-div" v-if="showList===2" style="margin: 60px">
       <div slot="header" class="layout-div header-bar">
-        <p><span class="breadcrumb" @click="changeMap(1)">动漫情感</span><span>> 新增</span></p>
-        <div class="header-bar-but" style="float: right;">
+        <p style="display: inline"><el-button type="text" class="breadcrumb" @click="changeMap(1)">动漫情感</el-button><el-button type="text">> 新增</el-button></p>
+        <div class="header-bar-but" style="float:right;margin-right:38px;display: inline">
           <el-button v-show="isUpdate" class="zdy-button bao_cun" @click="submitForm">保存</el-button>
           <el-button @click="changeMap(1)" class="zdy-button qu_xiao">取消</el-button>
         </div>
       </div>
-      <div class="layout-div" style="padding: 20px 40px;overflow-y: auto;overflow-x: hidden">
+      <div class="layout-div" style="padding: 20px 40px;margin-top:30px;overflow-y: auto;overflow-x: hidden">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
           <el-form-item label="书籍名称" prop="name">
             <el-input v-model="ruleForm.book_name"></el-input>
@@ -101,6 +103,52 @@
         </el-form>
       </div>
     </div>
+    <el-dialog title="提交订单" :visible.sync="dialogVisible" width="40%">
+      <el-form :data="this.openlaunch" label-width="90px" class="demo-ruleForm">
+        <el-form-item label="收货地址:" prop="name">
+          <el-input v-model="ruleForm.accept_address"></el-input>
+        </el-form-item>
+        <el-form-item label="收货人信息:" prop="name">
+          <el-input style="width: 200px" placeholder="收货人姓名" v-model="ruleForm.accept_name"></el-input>
+          <el-input style="width: 200px" placeholder="收货人手机" v-model="ruleForm.accept_phone"></el-input>
+        </el-form-item>
+        <el-form-item label="书籍信息:" prop="name">
+          <span>{{ruleForm.book_name}}     {{ruleForm.book_editor}}     {{ruleForm.kind_name}}     {{ruleForm.pub_name}}</span>
+        </el-form-item>
+        <el-form-item label="订单备注:" prop="name">
+          <el-input v-model="ruleForm.order_other"></el-input>
+        </el-form-item>
+        <el-form-item label="需要支付:" prop="book_price">
+          <span>{{ruleForm.book_price}}元</span>
+        </el-form-item>
+        <el-form-item style="margin-left: 70px">
+          <el-button type="primary">确认支付</el-button>
+          <el-button style="margin-left: 60px" type="danger" @click="dialogVisible = false">取消订单</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+    <el-dialog title="加入购物车" :visible.sync="dialogVisible1" width="40%">
+      <el-form :data="this.openlaunch1" label-width="230px" class="demo-ruleForm">
+        <el-form-item label="书籍名称:" prop="name">
+          <span>{{ruleForm.book_name}}</span>
+        </el-form-item>
+        <el-form-item label="书籍作者:" prop="name">
+          <span>{{ruleForm.book_editor}}</span>
+        </el-form-item>
+        <el-form-item label="书籍价格:" prop="name">
+          <span>{{ruleForm.book_price}}</span>
+        </el-form-item>
+        <el-form-item label="书籍种类:" prop="name">
+          <span>{{ruleForm.kind_name}}</span>
+        </el-form-item>
+        <el-form-item label="出版社名:" prop="name">
+          <span>{{ruleForm.pub_name}}</span>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary">确认加入</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 
@@ -118,16 +166,30 @@ export default {
   data () {
     return {
       isUpdate: true,
+      openlaunch: [],
+      openlaunch1: [],
+      dialogVisible: false,
+      dialogVisible1: false,
+      keywords: '',
       showList: 1,
       tableData: [],
-      items:[],
       sizeTotal: 0,
       ruleForm: {
+        book_id: '',
         book_name: '',
         book_editor: '',
         book_price: '',
         kind_name: '',
         pub_name: '',
+        accept_name: '',
+        accept_phone: '',
+        order_other: '',
+        accept_address: ''
+      },
+      queryForm: {
+        parameter: {
+          name: ''
+        },
       },
       rules: {
         book_name: [
@@ -146,24 +208,19 @@ export default {
           { required: true, message: '请输入书籍出版社', trigger: 'blur' }
         ],
       }
-      /*updateForm:{
-        book_editor:'',
-        book_id: '',
-        book_name: '',
-        kind_name: '',
-        book_num: '',
-        book_price: '',
-        pub_name: ''
-      }*/
     }
   },
   methods: {
     search () {
       var that = this
-      axios.get(`http://127.0.0.1:8080/book/getAll/动漫情感`).then(function (response) {
-        console.log(response)
-        that.items = response.data.data
-        that.tableData = response.data.data
+      that.$httpSystem.getBookByKind_name("动漫情感").then(response => {
+        for(let i =0;i<response.data.data.length;i++) {
+          if(response.data.data[i].book_name.includes(that.queryForm.parameter.name)){
+            that.tableData = response.data.data
+            //that.tableData[i] = response.data.data[i]
+            console.log(that.tableData[i])
+          }
+        }
       }).catch(function (error){
         console.log(error)
       })
@@ -198,10 +255,17 @@ export default {
       }else if(that.ruleForm.pub_name.trim()==='') {
         that.$message({message: '请输入书籍出版社', type: 'error', customClass: 'zZindex'})
       }else {
-        axios.post(`http://127.0.0.1:8080/book/add`, this.ruleForm).then(function (response) {
-          that.$message({message: '新增成功', type: 'success'})
-          that.changeMap(1)
-        })
+        if(!this.ruleForm.book_id){
+          axios.post(`http://127.0.0.1:8080/book/add`, this.ruleForm).then(function (response) {
+            that.$message({message: '新增成功', type: 'success'})
+            that.changeMap(1)
+          })
+        }else{
+          axios.post(`http://127.0.0.1:8080/book/update`, this.ruleForm).then(function (response) {
+            that.$message({type: 'success', message: '修改成功!', customClass: 'zZindex'});
+            that.changeMap(1)
+          })
+        }
       }
     },
     resetForm () {
@@ -213,28 +277,45 @@ export default {
         this.$message.warning('请输入数字')
         e.target.value=''
       }
-    }
-  },
-  deleteRow (row) {
-    // console.log('deleterow')
-    this.$confirm('是否确定删除?', '提示', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning'
-    }).then(() => {
-      this.$api.deletemonreportById(row.id).then(resp => {
-        if (resp.status !== 200) {
-          this.$message({message: '出错了', type: 'error'})
-        } else {
-          this.search()
-          this.$message({type: 'success', message: '删除成功!'})
-        }
+    },
+    updateRow(row) {
+      this.showList = 2
+      this.$httpSystem.getBookByBook_id(row.book_id).then(response => {
+        this.resetForm()
+        this.ruleForm = response.data.data
+        console.log(this.ruleForm)
       }).catch(e => {
-        this.tableLoading = false
         console.log(e)
       })
-    }).catch(() => {
-    })
+    },
+    deleteRow(row) {
+      this.$confirm('是否确定删除?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$httpSystem.deleteBookByBook_id(row.book_id).then(response => {
+          this.search()
+          this.$message({type: 'success', message: '删除成功!'})
+        })
+      })
+    },
+    shopRow(row) {
+      this.openlaunch1 = []
+      this.dialogVisible1 = true
+      this.$httpSystem.getBookByBook_id((row.book_id)).then(response => {
+        this.ruleForm = response.data.data
+        console.log(response.data.data)
+      })
+    },
+    buyRow(row) {
+      this.openlaunch = []
+      this.dialogVisible = true
+      this.$httpSystem.getBookByBook_id((row.book_id)).then(response => {
+        this.ruleForm = response.data.data
+        console.log(response.data.data)
+      })
+    }
   },
   mounted () {
     this.search()
@@ -244,5 +325,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

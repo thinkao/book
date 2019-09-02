@@ -92,7 +92,7 @@
         <p style="position: relative;font-size: 20px ;line-height: 60px">1元 = 10元</p>
         <p style="position: relative;font-size: 20px ;line-height: 60px">10本书 = 1本书</p>
         <p style="position: relative;font-size: 20px ;line-height: 60px">1分承諾 = 1份安心</p>
-        <p style="position: relative;font-size: 30px ;line-height: 60px"> Are You OK ?</p>
+        <p style="position: relative;font-size: 30px ;line-height: 60px"> Are You Ready ?</p>
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@ export default {
     return {
       fits1: ['公众基础书类', '考研书材料类', 'CET雅思托福类', '专业书籍类'],
       fits2: ['言情剧小说类', '情感剧漫画类', '社会人文科学类', '其他书籍类'],
-      url: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565975771268&di=25e67b4b0c3db2b6cd519d4248d7e69d&imgtype=0&src=http%3A%2F%2Fuploads.5068.com%2Fallimg%2F1801%2F162-1P116162621-52.png', 'http://img2.3lian.com/2014/f4/191/d/22.jpg', 'http://img2.3lian.com/2014/f4/191/d/22.jpg', 'http://img2.3lian.com/2014/f4/191/d/22.jpg'],
+      url: ['https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565975771268&di=25e67b4b0c3db2b6cd519d4248d7e69d&imgtype=0&src=http%3A%2F%2Fuploads.5068.com%2Fallimg%2F1801%2F162-1P116162621-52.png', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565975771268&di=25e67b4b0c3db2b6cd519d4248d7e69d&imgtype=0&src=http%3A%2F%2Fuploads.5068.com%2Fallimg%2F1801%2F162-1P116162621-52.png', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565975771268&di=25e67b4b0c3db2b6cd519d4248d7e69d&imgtype=0&src=http%3A%2F%2Fuploads.5068.com%2Fallimg%2F1801%2F162-1P116162621-52.png', 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565975771268&di=25e67b4b0c3db2b6cd519d4248d7e69d&imgtype=0&src=http%3A%2F%2Fuploads.5068.com%2Fallimg%2F1801%2F162-1P116162621-52.png'],
       picture: [
         {
           img: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555932101740&di=9ee42bcea75b9a6b91f15b6da964ac37&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F5879c03369db1.jpg'

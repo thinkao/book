@@ -35,8 +35,8 @@
                 <el-submenu index="1-4">
                   <template slot="title">我的订单</template>
                   <el-menu-item index="1-4-1">购物车</el-menu-item>
-                  <el-menu-item index="1-4-1">待收货</el-menu-item>
-                  <el-menu-item index="1-4-1">已购买</el-menu-item>
+                  <el-menu-item index="1-4-2">待收货</el-menu-item>
+                  <el-menu-item index="1-4-3">已购买</el-menu-item>
                 </el-submenu>
               </el-submenu>
               <el-menu-item index="2">
@@ -118,7 +118,8 @@
       <el-submenu index="9" style="float: right">
         <template slot="title">此处显示昵称</template>
         <el-menu-item index="9-1" style="text-align: center">修改密码</el-menu-item>
-        <el-menu-item index="9-2" style="text-align: center" @click="loginTo">退出登录</el-menu-item>
+        <router-link to="/Login"><el-menu-item index="9-2" style="text-align: center">退出登录</el-menu-item></router-link>
+
       </el-submenu>
       <img src="../../static/img/auto.jpg" style="width: 60px;height: 60px;float: right;">
     </el-menu>
