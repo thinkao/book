@@ -68,19 +68,19 @@
       </div>
       <div class="layout-div" style="padding: 20px 40px;margin-top:30px;overflow-y: auto;overflow-x: hidden">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-          <el-form-item label="书籍名称" prop="name">
+          <el-form-item label="书籍名称" prop="book_name">
             <el-input v-model="ruleForm.book_name"></el-input>
           </el-form-item>
-          <el-form-item label="书籍作者" prop="name">
+          <el-form-item label="书籍作者" prop="book_editor">
             <el-input v-model="ruleForm.book_editor"></el-input>
           </el-form-item>
-          <el-form-item label="单本价格" prop="name">
+          <el-form-item label="单本价格" prop="book_price">
             <el-input v-model="ruleForm.book_price" @blur="BlurText1($event)"></el-input>
           </el-form-item>
-          <el-form-item label="出版社" prop="name">
+          <el-form-item label="出版社" prop="pub_name">
             <el-input v-model="ruleForm.pub_name"></el-input>
           </el-form-item>
-          <el-form-item label="书籍类别" prop="region">
+          <el-form-item label="书籍类别" prop="kind_name">
             <el-select v-model="ruleForm.kind_name" placeholder="请选择书籍类别">
               <el-option-group label="公众类书籍" value="public">
                 <el-option label="区域二" value="1"></el-option>
@@ -100,12 +100,22 @@
               </el-option-group>
             </el-select>
           </el-form-item>
+          <el-form-item label="上传书图" prop="picture">
+            <el-upload
+              class="upload-demo"
+              v-model="ruleForm.picture"
+              action="https://jsonplaceholder.typicode.com/posts/"
+              multiple
+              :file-list="fileList">
+              <el-button size="small" type="primary">点击上传</el-button>
+            </el-upload>
+          </el-form-item>
         </el-form>
       </div>
     </div>
     <el-dialog title="提交订单" :visible.sync="dialogVisible" width="40%">
       <el-form :data="this.openlaunch" label-width="90px" class="demo-ruleForm">
-        <el-form-item label="收货地址:" prop="name">
+        <el-form-item label="收货地址:" prop="accept_address">
           <el-input v-model="ruleForm.accept_address"></el-input>
         </el-form-item>
         <el-form-item label="收货人信息:" prop="name">
@@ -115,7 +125,7 @@
         <el-form-item label="书籍信息:" prop="name">
           <span>{{ruleForm.book_name}}     {{ruleForm.book_editor}}     {{ruleForm.kind_name}}     {{ruleForm.pub_name}}</span>
         </el-form-item>
-        <el-form-item label="订单备注:" prop="name">
+        <el-form-item label="订单备注:" prop="order_other">
           <el-input v-model="ruleForm.order_other"></el-input>
         </el-form-item>
         <el-form-item label="需要支付:" prop="book_price">
@@ -129,19 +139,19 @@
     </el-dialog>
     <el-dialog title="加入购物车" :visible.sync="dialogVisible1" width="40%">
       <el-form :data="this.openlaunch1" label-width="230px" class="demo-ruleForm">
-        <el-form-item label="书籍名称:" prop="name">
+        <el-form-item label="书籍名称:" prop="book_name">
           <span>{{ruleForm.book_name}}</span>
         </el-form-item>
-        <el-form-item label="书籍作者:" prop="name">
+        <el-form-item label="书籍作者:" prop="book_editor">
           <span>{{ruleForm.book_editor}}</span>
         </el-form-item>
-        <el-form-item label="书籍价格:" prop="name">
+        <el-form-item label="书籍价格:" prop="book_price">
           <span>{{ruleForm.book_price}}</span>
         </el-form-item>
-        <el-form-item label="书籍种类:" prop="name">
+        <el-form-item label="书籍种类:" prop="kind_name">
           <span>{{ruleForm.kind_name}}</span>
         </el-form-item>
-        <el-form-item label="出版社名:" prop="name">
+        <el-form-item label="出版社名:" prop="pub_name">
           <span>{{ruleForm.pub_name}}</span>
         </el-form-item>
         <el-form-item>
@@ -167,6 +177,7 @@ export default {
     return {
       isUpdate: true,
       openlaunch: [],
+      fileList: [],
       openlaunch1: [],
       dialogVisible: false,
       dialogVisible1: false,
@@ -184,7 +195,9 @@ export default {
         accept_name: '',
         accept_phone: '',
         order_other: '',
-        accept_address: ''
+        accept_address: '',
+        picture: '',
+        picture_name: ''
       },
       queryForm: {
         parameter: {
@@ -214,11 +227,10 @@ export default {
     search () {
       var that = this
       that.$httpSystem.getBookByKind_name("动漫情感").then(response => {
+        that.tableData = []
         for(let i =0;i<response.data.data.length;i++) {
           if(response.data.data[i].book_name.includes(that.queryForm.parameter.name)){
-            that.tableData = response.data.data
-            //that.tableData[i] = response.data.data[i]
-            console.log(that.tableData[i])
+            that.tableData.push(response.data.data[i])
           }
         }
       }).catch(function (error){
