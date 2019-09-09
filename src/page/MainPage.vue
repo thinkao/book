@@ -30,24 +30,35 @@
                   <el-menu-item index="1-2">我的钱包</el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group>
-                  <el-menu-item index="1-3">我的积分</el-menu-item>
+                  <el-menu-item index="1-3">我的消息</el-menu-item>
                 </el-menu-item-group>
-                <el-submenu index="1-4">
+                <el-menu-item-group>
+                  <el-menu-item index="1-4">我的积分</el-menu-item>
+                </el-menu-item-group>
+                <el-submenu index="1-5">
                   <template slot="title">我的订单</template>
-                  <el-menu-item index="1-4-1">购物车</el-menu-item>
-                  <el-menu-item index="1-4-2">待收货</el-menu-item>
-                  <el-menu-item index="1-4-3">已购买</el-menu-item>
+                  <el-menu-item index="1-5-1">购物车</el-menu-item>
+                  <el-menu-item index="1-5-2">待收货</el-menu-item>
+                  <el-menu-item index="1-5-3">已购买</el-menu-item>
                 </el-submenu>
               </el-submenu>
               <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">我的消息</span>
+                <i class="el-icon-user-solid"></i>
+                <span slot="title">用户管理</span>
               </el-menu-item>
               <el-menu-item index="3">
+                <i class="el-icon-menu"></i>
+                <span slot="title">角色管理</span>
+              </el-menu-item>
+              <el-menu-item index="4">
+                <i class="el-icon-star-on"></i>
+                <span slot="title">权限管理</span>
+              </el-menu-item>
+              <el-menu-item index="5">
                 <i class="el-icon-document"></i>
                 <span slot="title" @click="drawer = true">我的日历</span>
               </el-menu-item>
-              <el-menu-item index="4">
+              <el-menu-item index="6">
                 <i class="el-icon-setting"></i>
                 <span slot="title">我的设置</span>
               </el-menu-item>

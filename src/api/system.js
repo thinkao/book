@@ -32,5 +32,9 @@ export const getBookByKind_name = (kind) => {
   return axios.get(`http://127.0.0.1:8080/book/getAll/${kind}`).then(res => res)
 }
 
-
-
+/*
+* 列出所有书籍
+* */
+export const getBookAll = (params) => {
+  return axios.post(`http://127.0.0.1:8080/book/page`,params).then(res => res)
+}

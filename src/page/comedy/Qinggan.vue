@@ -1,7 +1,7 @@
 <template>
   <div class="layout-div">
     <Demo></Demo>
-    <div class="layout-div" slot="header" v-if="showList===1" style="margin-top: 50px">
+    <div class="layout-div" slot="header" v-if="showList===1" style="margin-top: 40px">
       <el-form class="query-from"  v-model="queryForm"  :inline="true" style="display: inline">
         <el-form-item>
           <el-input v-model="queryForm.parameter.name" placeholder="输入条件"></el-input>
@@ -11,13 +11,16 @@
         </el-form-item>
       </el-form>
       <el-button class="zdy-button bao_cun" style="margin: 0px 30px 0 0;display: inline;float: right;" @click="changeMap(2)">新增</el-button>
-      <div class="layout-div" style="padding: 0 10px 0;">
+      <div class="layout-div data-list-cont-table" style="padding: 0 10px 0;">
         <el-table
           :data="tableData"
+          :height="tableHeight"
+          :max-height="tableHeight"
           stripe
           style="width: 100%">
           <el-table-column
             type="index"
+            :index="table_index"
             width="50">
           </el-table-column>
           <el-table-column
@@ -56,7 +59,13 @@
           </el-table-column>
         </el-table>
       </div>
+      <div slot="footer" class="layout-div" style="text-align: right;position: relative;top: 8px;right: 15px">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" layout="total, sizes, prev, pager, next, jumper"
+                       :current-page="currentPage" :page-size="pageSize" :total="sizeTotal">
+        </el-pagination>
+      </div>
     </div>
+
 
     <div class="layout-div" v-if="showList===2" style="margin: 60px">
       <div slot="header" class="layout-div header-bar">
@@ -185,6 +194,7 @@ export default {
       showList: 1,
       tableData: [],
       sizeTotal: 0,
+      tableHeight: -1,
       ruleForm: {
         book_id: '',
         book_name: '',
@@ -199,10 +209,16 @@ export default {
         picture: '',
         picture_name: ''
       },
+      /*pageSizes: config.pageSizes,
+      pageSize: config.pageSize,*/
+      currentPage: 1,
+      pageSize: 10,
       queryForm: {
         parameter: {
           name: ''
         },
+        currentPage: 1,
+        pageSize: 10
       },
       rules: {
         book_name: [
@@ -226,16 +242,25 @@ export default {
   methods: {
     search () {
       var that = this
-      that.$httpSystem.getBookByKind_name("动漫情感").then(response => {
+      let queryObj = {
+        'current': this.queryForm.currentPage,
+        'limit': this.queryForm.pageSize,
+        'offset': 0,
+        'book_name':this.queryForm.parameter.name,
+        'kind_name': '动漫情感'
+      }
+      that.$httpSystem.getBookAll(queryObj).then(response => {
         that.tableData = []
-        for(let i =0;i<response.data.data.length;i++) {
-          if(response.data.data[i].book_name.includes(that.queryForm.parameter.name)){
-            that.tableData.push(response.data.data[i])
-          }
-        }
+        this.tableData = response.data.data.rows
+        this.sizeTotal = response.data.data.total
+
       }).catch(function (error){
         console.log(error)
       })
+    },
+
+    table_index(index) {
+      return (this.queryForm.currentPage - 1) * this.queryForm.pageSize + index + 1
     },
     changeMap (type) {
       if (this.showList === 2) {
@@ -327,9 +352,25 @@ export default {
         this.ruleForm = response.data.data
         console.log(response.data.data)
       })
-    }
+    },
+    handleSizeChange (val) {
+      console.log(`每页 ${val} 条`);
+      this.pageSize = val;
+      this.currentPage = 1;
+      this.queryForm.pageSize = this.pageSize;
+      this.queryForm.currentPage = this.currentPage;
+      this.search()
+    },
+    handleCurrentChange (val) {
+      console.log(`当前页: ${val}`);
+      this.currentPage = val;
+      this.queryForm.pageSize = this.pageSize;
+      this.queryForm.currentPage = this.currentPage;
+      this.search()
+    },
   },
   mounted () {
+    this.tableHeight = 490
     this.search()
   }
 }
