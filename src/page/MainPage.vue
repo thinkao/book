@@ -20,7 +20,8 @@
               background-color="#545c64"
               text-color="#fff"
               active-text-color="#ffd04b">
-              <el-submenu index="1">
+              <li v-for="n in MenuData"><a :href="n.menu_url">{{n.menu_name}}</a></li>
+              <!--<el-submenu index="1">
                 <template slot="title">
                   <i class="el-icon-location"></i>
                   <span>我的个人</span>
@@ -61,7 +62,7 @@
               <el-menu-item index="6">
                 <i class="el-icon-setting"></i>
                 <span slot="title">我的设置</span>
-              </el-menu-item>
+              </el-menu-item>-->
             </el-menu>
           </el-col>
         </el-row>
@@ -127,7 +128,7 @@
         <el-menu-item index="8-4">经济类</el-menu-item>
       </el-submenu>
       <el-submenu index="9" style="float: right">
-        <template slot="title">此处显示昵称</template>
+        <template slot="title">{{NiName}}</template>
         <el-menu-item index="9-1" style="text-align: center">修改密码</el-menu-item>
         <router-link to="/Login"><el-menu-item index="9-2" style="text-align: center">退出登录</el-menu-item></router-link>
 
@@ -149,14 +150,41 @@
 export default {
   data () {
     return {
+      NiName: sessionStorage.getItem('user_name'),
+      MenuData: [],
       activeIndex: '1',
       activeIndex2: '1',
       drawer: false,
       direction: 'ltr',
-      value: new Date()
+      value: new Date(),
+      updateForm:{
+        user_id: '',
+        menu_id: '',
+        menu_name: '',
+        menu_parent: '',
+        menu_url: '',
+        role_id: '',
+        role_name: '',
+        user_name: '',
+        user_account: '',
+        user_pass: '',
+        user_addr: '',
+        user_phone: ''
+      }
     }
   },
   methods: {
+    search () {
+      var that = this
+      let queryObj = sessionStorage.getItem('user_id')
+      that.$api.getMenuById(queryObj).then(response => {
+        that.MenuData = response.data.data
+        //console.log(that.MenuData+"输出数据")
+
+      }).catch(function (error){
+        console.log(error)
+      })
+    },
     handleSelect (key, keyPath) {
       console.log(key, keyPath)
     },
@@ -168,7 +196,10 @@ export default {
     },
     Children:function () {
       this.$router.push('comedy/Children')
-    }
+    },
+  },
+  mounted () {
+    this.search()
   }
 }
 </script>

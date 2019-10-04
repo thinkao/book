@@ -6,6 +6,7 @@ import Launcher from '../page/Launcher.vue'
 import HomePage from '../page/HomePage.vue'
 import Qinggan from '../page/comedy/Qinggan.vue'
 import Children from '../page/comedy/Children.vue'
+import MySet from '@/page/personal/myset/MySet'
 
 Vue.use(Router)
 
@@ -41,6 +42,11 @@ let routes = [
     //redirect: '/page/comedy/Children',
     name: '儿童',
     component: Children
+  },
+  {
+    path:'/page/personal/myset/MySet',
+    name: '我的设置',
+    component: MySet
   }
 ]
 export default routes

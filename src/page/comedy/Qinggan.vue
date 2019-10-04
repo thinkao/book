@@ -10,7 +10,7 @@
           <el-button class="zdy-button" icon="el-icon-search" :plain="true" @click="search"></el-button>
         </el-form-item>
       </el-form>
-      <el-button class="zdy-button bao_cun" style="margin: 0px 30px 0 0;display: inline;float: right;" @click="changeMap(2)">新增</el-button>
+      <el-button v-if="showAddBtn()" class="zdy-button bao_cun" style="margin: 0px 30px 0 0;display: inline;float: right;" @click="changeMap(2)">新增</el-button>
       <div class="layout-div data-list-cont-table" style="padding: 0 10px 0;">
         <el-table
           :data="tableData"
@@ -51,8 +51,8 @@
           </el-table-column>
           <el-table-column  label="操作">
             <template slot-scope="scope">
-              <el-button @click="deleteRow(scope.row)" type="text" size="small"><i class="el-icon-delete" title="删除"></i></el-button>
-              <el-button @click="updateRow(scope.row)" type="text" size="small"><i class="el-icon-edit" title="编辑"></i></el-button>
+              <el-button v-if="showDelBtn(scope.row)" @click="deleteRow(scope.row)" type="text" size="small"><i class="el-icon-delete" title="删除"></i></el-button>
+              <el-button v-if="showEditBtn(scope.row)" @click="updateRow(scope.row)" type="text" size="small"><i class="el-icon-edit" title="编辑"></i></el-button>
               <el-button @click="shopRow(scope.row)" type="text" size="small"><i class=" el-icon-shopping-cart-2" title="加入购物车"></i></el-button>
               <el-button @click="buyRow(scope.row)" type="text" size="small"><i class=" el-icon-shopping-bag-1" title="点击购买"></i></el-button>
             </template>
@@ -251,8 +251,8 @@ export default {
       }
       that.$httpSystem.getBookAll(queryObj).then(response => {
         that.tableData = []
-        this.tableData = response.data.data.rows
-        this.sizeTotal = response.data.data.total
+        that.tableData = response.data.data.rows
+        that.sizeTotal = response.data.data.total
 
       }).catch(function (error){
         console.log(error)
@@ -303,6 +303,30 @@ export default {
             that.changeMap(1)
           })
         }
+      }
+    },
+    showAddBtn (){
+      let user = JSON.parse(sessionStorage.getItem('user'))
+      if(user.username == 'admin'){
+        return true;
+      }else{
+        return false;
+      }
+    },
+    showDelBtn (row){
+      let user = JSON.parse(sessionStorage.getItem('user'))
+      if(user.username == 'admin'){
+        return true;
+      }else{
+        return false;
+      }
+    },
+    showEditBtn (row){
+      let user = JSON.parse(sessionStorage.getItem('user'))
+      if(user.username == 'admin'){
+        return true;
+      }else{
+        return false;
       }
     },
     resetForm () {

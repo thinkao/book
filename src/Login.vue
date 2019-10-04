@@ -63,7 +63,8 @@ export default {
       input2: '',
       addForm: {
         user_account: '',
-        user_pass: ''
+        user_pass: '',
+        //user_name: '',
       }
     }
   },
@@ -87,6 +88,7 @@ export default {
       }
     },
     onLogin () {
+      sessionStorage.clear()
       if (this.addForm.user_account.trim() === '') {
         this.$message({message: '请输入账号', type: 'error', customClass: 'zZindex'})
       } else if (this.addForm.user_pass.trim() === '') {
@@ -97,11 +99,18 @@ export default {
         var loginParams = {user_account: this.addForm.user_account, user_pass: this.addForm.user_pass}
         this.$httpSystem.login(loginParams).then(resp => {
           this.loginLoading = false
-          console.log(resp)
+          console.log(resp+'输出resp')
           if (resp.data.code === 401) {
             this.$message({message: '用户名或者密码错误', type: 'error'})
           } else {
             this.$message({message: '登陆成功', type: 'success'})
+            let user = JSON.parse(resp.data.data)
+            //this.addForm.user_name = user.user_name
+            sessionStorage.setItem('user_name',user.user_name)
+            sessionStorage.setItem('user_id',user.user_id)
+            sessionStorage.setItem('user_account',this.addForm.user_account)
+            sessionStorage.setItem('user', resp.data.data)
+            sessionStorage.setItem('token', user.token)
             this.$router.push('page/HomePage')
           }
           console.log('success!!!')
@@ -116,6 +125,7 @@ export default {
     }
   },
   mounted () {
+    sessionStorage.clear()
   }
 }
 </script>
