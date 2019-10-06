@@ -38,3 +38,17 @@ export const getBookByKind_name = (kind) => {
 export const getBookAll = (params) => {
   return axios.post(`http://127.0.0.1:8080/book/page`,params).then(res => res)
 }
+
+/*
+* 列出所有用户
+* */
+export const getUserAll = (params) => {
+  return axios.get(`http://127.0.0.1:8080/user/getPageUser`,params).then(res => res)
+}
+
+/*
+* 修改用户角色
+* */
+export const updateUserRole = (params) => {
+  return axios.post(`http://127.0.0.1:8080/user/updateUserRole`,params).then(res => res)
+}

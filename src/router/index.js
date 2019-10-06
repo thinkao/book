@@ -7,6 +7,9 @@ import HomePage from '../page/HomePage.vue'
 import Qinggan from '../page/comedy/Qinggan.vue'
 import Children from '../page/comedy/Children.vue'
 import MySet from '@/page/personal/myset/MySet'
+import RoleManager from '@/page/manager/RoleManager'
+import LevelManager from '@/page/manager/LevelManager'
+import InforManager from '@/page/manager/InforManager'
 
 Vue.use(Router)
 
@@ -47,6 +50,21 @@ let routes = [
     path:'/page/personal/myset/MySet',
     name: '我的设置',
     component: MySet
+  },
+  {
+  path:'/page/manager/RoleManager',
+  name: '角色管理',
+  component: RoleManager
+  },
+  {
+    path:'/page/manager/LevelManager',
+    name: '权限管理',
+    component: LevelManager
+  },
+  {
+    path:'/page/manager/InforManager',
+    name: '信息管理',
+    component: InforManager
   }
 ]
 export default routes

@@ -2,7 +2,7 @@
   <div class="layout-div">
     <Demo></Demo>
     <div class="layout-div" slot="header" v-if="showList===1" style="margin-top: 40px">
-      <el-form class="query-from"  v-model="queryForm"  :inline="true" style="display: inline">
+      <el-form class="query-from"  v-model="queryForm"  :inline="true" style="display: inline;padding-left: 10px">
         <el-form-item>
           <el-input v-model="queryForm.parameter.name" placeholder="输入条件"></el-input>
         </el-form-item>
@@ -307,7 +307,7 @@ export default {
     },
     showAddBtn (){
       let user = JSON.parse(sessionStorage.getItem('user'))
-      if(user.username == 'admin'){
+      if(user.role_id == '1'){
         return true;
       }else{
         return false;
@@ -315,7 +315,7 @@ export default {
     },
     showDelBtn (row){
       let user = JSON.parse(sessionStorage.getItem('user'))
-      if(user.username == 'admin'){
+      if(user.role_id == '1'){
         return true;
       }else{
         return false;
@@ -323,7 +323,7 @@ export default {
     },
     showEditBtn (row){
       let user = JSON.parse(sessionStorage.getItem('user'))
-      if(user.username == 'admin'){
+      if(user.role_id == '1'){
         return true;
       }else{
         return false;
@@ -401,5 +401,9 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
+  body{
+    margin: 0;
+    padding:0;
+  }
 </style>

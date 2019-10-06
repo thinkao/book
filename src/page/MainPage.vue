@@ -20,7 +20,30 @@
               background-color="#545c64"
               text-color="#fff"
               active-text-color="#ffd04b">
-              <li v-for="n in MenuData"><a :href="n.menu_url">{{n.menu_name}}</a></li>
+              <li v-if="n.menu_parent==='0'" v-for="n in MenuData">
+                <el-submenu :index="n.menu_id">
+                  <template slot="title" style="padding-left: 0 !important">
+                    <router-link :to="n.menu_url" style="color: white;text-decoration: none">{{n.menu_name}}</router-link>
+                  </template>
+
+
+                  <ul v-if="m.menu_parent===n.menu_id" v-for="m in MenuData">
+                    <el-submenu :index="m.menu_id" style="padding-left: 0 !important">
+                      <template slot="title" style="padding-left: 0 !important">
+                        <router-link :to="m.menu_url" style="color: white;text-decoration: none;padding-left: 0 !important">{{m.menu_name}}</router-link>
+                      </template>
+
+                    <ul v-if="k.menu_parent===m.menu_id" v-for="k in MenuData">
+                      <el-menu-item :index="k.menu_id">
+                        <router-link :to="k.menu_url" style="color: white;text-decoration: none">{{k.menu_name}}</router-link>
+                      </el-menu-item>
+                    </ul>
+
+                    </el-submenu>
+                  </ul>
+                </el-submenu>
+
+              </li>
               <!--<el-submenu index="1">
                 <template slot="title">
                   <i class="el-icon-location"></i>
@@ -179,7 +202,8 @@ export default {
       let queryObj = sessionStorage.getItem('user_id')
       that.$api.getMenuById(queryObj).then(response => {
         that.MenuData = response.data.data
-        //console.log(that.MenuData+"输出数据")
+        /*let role = JSON.stringify(response.data.data)
+        console.log(role+"输出数据")*/
 
       }).catch(function (error){
         console.log(error)
@@ -203,6 +227,9 @@ export default {
   }
 }
 </script>
-<style>
-
+<style scoped>
+ul,li{
+  margin: 0;
+  padding: 0;
+}
 </style>

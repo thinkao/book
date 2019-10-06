@@ -108,6 +108,7 @@ export default {
             //this.addForm.user_name = user.user_name
             sessionStorage.setItem('user_name',user.user_name)
             sessionStorage.setItem('user_id',user.user_id)
+            sessionStorage.setItem('role_id',user.role_id)
             sessionStorage.setItem('user_account',this.addForm.user_account)
             sessionStorage.setItem('user', resp.data.data)
             sessionStorage.setItem('token', user.token)
